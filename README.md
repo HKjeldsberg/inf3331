@@ -1,2 +1,2 @@
 # inf3331
-INF3331 repo /m oppg ol.
+INF3331 material
