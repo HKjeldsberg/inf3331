@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="no"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="no"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="no"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="no">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" />
+    <meta name="description" content="Planlegg din kollektivreise og se rutetider for T-bane, trikk, buss, b&#229;t og tog med Ruters reiseplanlegger. Du kan ogs&#229; se avgangstider i sanntid.">
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>Reiseplanlegger</title>
+    
+
+    <link href="/Static/Ruter/css/bundle.css?v=dzXn_JVcb3iR9bhHRuINVKN4NQ-C-mr98o313QMZfHc1" rel="stylesheet"/>
+
+    <link href="/Static/Ruter/css/bundle-print.css?v=ksPiJ4-r5kUsK4BzO0AbEDW1Zq_lNzgQIDtRi76XRp41" rel="stylesheet" type="text/css" media="print">
+
+
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+    
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false&key='></script>
+    
+
+
+</head>
+<body data-ng-app="app" data-popup-helper="popupActive">
+    
+<ol class="accessibility-menu visuallyhidden" data-ng-class="{'visuallyhidden': !isAccessibilityMenuVisible }">
+        <li><a href="" data-skip-to-content="journey_planner" data-ng-focus="isAccessibilityMenuVisible = true" data-ng-blur="isAccessibilityMenuVisible = false" title="G&#229; til reiseplanleggeren">
+            G&#229; til reiseplanleggeren
+        </a></li>   
+    <li><a href="" data-skip-to-content="navigation" data-ng-focus="isAccessibilityMenuVisible = true" data-ng-blur="isAccessibilityMenuVisible = false" title="G&#229; til hovedmeny">
+        G&#229; til hovedmeny
+    </a></li>
+    <li><a href="" data-skip-to-content="search-input-header" data-ng-focus="isAccessibilityMenuVisible = true" data-ng-blur="isAccessibilityMenuVisible = false" title="G&#229; til s&#248;kefelt">
+        G&#229; til s&#248;kefelt
+    </a></li>
+        <li><a href="" data-skip-to-content="JPcontent" data-ng-focus="isAccessibilityMenuVisible = true" data-ng-blur="isAccessibilityMenuVisible = false" title="G&#229; til innhold">
+            G&#229; til innhold
+        </a></li>
+</ol>
+
+<header class="header">
+    <div class="page__wrapper">
+        
+        <nav role="navigation">
+            <h2 class="visuallyhidden">Hovedmeny</h2>
+            <div class="grid" data-ng-controller="NavigationCtrl">
+                <div class="grid__item  desk-two-twelfths">
+                    <div class="header-logo">
+                        <a href="/" title="G&#229; til forsiden">
+                            <img src="/Static/Ruter/images/ruter-logo--brand.png" alt="Ruters logo" />
+                        </a>
+                    </div>
+                </div>
+                <div class="grid__item desk-seven-twelfths">
+
+                    <a href="" class="navigation-hamburger-button navigation-hamburger-button--no" data-ng-click="mobile.menuCollapsed  = !mobile.menuCollapsed" data-ng-class="{active: mobile.menuCollapsed}"><span class="visuallyhidden">Meny</span></a>
+                        <ul class="navigation-primary  nav" data-ng-class="{active: mobile.menuCollapsed}" data-accessible-dropdown="active">
+                                <li class="navigation-primary__item navigation-primary__item-selected navigation-primary__item--has-submenu" data-ng-init="mobile.subMenuCollapsed[0]=false" data-ng-class="{active: mobile.subMenuCollapsed[0]}">
+                                    <a href="/reiseplanlegger/" title="Finn reise" id="navigation">Finn reise</a>
+                                        <span class="navigation-primary__expand-collapse-button" data-ng-click="expandCollapse(0)"></span>
+                                        <ul class="navigation-primary-submenu  nav  nav--stacked">
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/reiseplanlegger/" title="Reiseplanlegger">Reiseplanlegger</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/reiseplanlegger/ruterreise-app/" title="RuterReise-app">RuterReise-app</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/reiseplanlegger/rutetabeller-og-linjekart/" title="Rutetabeller og linjekart">Rutetabeller og linjekart</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/reiseplanlegger/nattbuss/" title="Nattbuss">Nattbuss</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/reiseplanlegger/sanntid/" title="Sanntid">Sanntid</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/reiseplanlegger/tilgjengelighet/" title="Tilgjengelighet">Tilgjengelighet</a>
+                                                </li>
+                                        </ul>
+                                </li>
+                                <li class="navigation-primary__item  navigation-primary__item--has-submenu" data-ng-init="mobile.subMenuCollapsed[1]=false" data-ng-class="{active: mobile.subMenuCollapsed[1]}">
+                                    <a href="/kjop-billett/billetter-og-priser/" title="Billetter" >Billetter</a>
+                                        <span class="navigation-primary__expand-collapse-button" data-ng-click="expandCollapse(1)"></span>
+                                        <ul class="navigation-primary-submenu  nav  nav--stacked">
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/billetter-og-priser/" title="Billetter og priser">Billetter og priser</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/soner/" title="Soner og sonekart">Soner og sonekart</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/salgssteder/" title="Slik kj&#248;per du billett">Slik kj&#248;per du billett</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/ruterbillett-app/" title="RuterBillett-app">RuterBillett-app</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/reisekort/" title="Reisekort">Reisekort</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/storkunde/" title="Bedrift">Bedrift</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/kjop-billett/skole-og-spesialskyss/" title="Skoleskyss">Skoleskyss</a>
+                                                </li>
+                                        </ul>
+                                </li>
+                                <li class="navigation-primary__item  navigation-primary__item--has-submenu" data-ng-init="mobile.subMenuCollapsed[2]=false" data-ng-class="{active: mobile.subMenuCollapsed[2]}">
+                                    <a href="/fa-hjelp/kontakt-oss/" title="Hjelp og kontakt" >Hjelp og kontakt</a>
+                                        <span class="navigation-primary__expand-collapse-button" data-ng-click="expandCollapse(2)"></span>
+                                        <ul class="navigation-primary-submenu  nav  nav--stacked">
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/kontakt-oss/" title="Kontakt oss">Kontakt oss</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/reisegaranti-og-drosjerefusjon/" title="Drosjerefusjon og reisegaranti">Drosjerefusjon og reisegaranti</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/billettkontroll/" title="Billettkontroll">Billettkontroll</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/overfore-billetter/" title="Overf&#248;re billetter">Overf&#248;re billetter</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/hittegods/" title="Hittegods">Hittegods</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/billettrefusjon/" title="Billettrefusjon">Billettrefusjon</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/ofte-stilte-sporsmal/" title="Ofte stilte sp&#248;rsm&#229;l">Ofte stilte sp&#248;rsm&#229;l</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/fa-hjelp/vilkar/" title="Vilk&#229;r">Vilk&#229;r</a>
+                                                </li>
+                                        </ul>
+                                </li>
+                                <li class="navigation-primary__item  navigation-primary__item--has-submenu" data-ng-init="mobile.subMenuCollapsed[3]=false" data-ng-class="{active: mobile.subMenuCollapsed[3]}">
+                                    <a href="/om-ruter/selskapsinformasjon/" title="Om Ruter" >Om Ruter</a>
+                                        <span class="navigation-primary__expand-collapse-button" data-ng-click="expandCollapse(3)"></span>
+                                        <ul class="navigation-primary-submenu  nav  nav--stacked">
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/om-ruter/selskapsinformasjon/" title="Selskapsinformasjon">Selskapsinformasjon</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/om-ruter/rapporter-planer-prosjekter/" title="Rapporter, planer og prosjekter">Rapporter, planer og prosjekter</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/om-ruter/presse/" title="Presse">Presse</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/om-ruter/offentlig-journal/" title="Offentlig journal">Offentlig journal</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/om-ruter/miljo/" title="Milj&#248;">Milj&#248;</a>
+                                                </li>
+                                                <li class="navigation-primary-submenu__item ">
+                                                    <a href="/om-ruter/jobb/" title="Jobb i Ruter">Jobb i Ruter</a>
+                                                </li>
+                                        </ul>
+                                </li>
+                                <li class="navigation-primary__item  " >
+                                    <a href="/minside/" title="MinSide" >MinSide</a>
+                                </li>
+                        </ul>
+                </div>
+                <div class="grid__item  desk-three-twelfths">
+                    <div class="grid">
+                        <div class="grid__item desk-two-tenths">
+                                <a class="header__language-icon header__language-icon--en header__language-button" href="/en/journey-planner/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/" title="Switch to English">
+                                    <span class="visuallyhidden">Switch to English</span>    
+                                </a>
+                        </div>
+                        <div class="grid__item desk-eight-tenths">
+                                <div role="search" class="header-search" data-ng-class="{active: mobile.menuCollapsed}">
+                                    <form method="GET" action="/sok/" class="header-search__form">
+                                        <label class="visuallyhidden" for="search-input-header">S&#248;k p&#229; nettsiden</label>
+                                        <input id="search-input-header" name="q" type="text" placeholder="S&#248;k" class="header-search__input-text" />
+                                        <button type="submit" class="header-search__submit-button" id="some-button">
+                                            <span class="visuallyhidden">S&#248;k</span>
+                                        </button>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    <nav class="breadcrumbs-section">
+        <div class="page__wrapper">
+            <h2 class="visuallyhidden">Navigasjonssti</h2>
+
+            <div class="grid">
+                <div class="grid__item">
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" id="content">
+        
+
+
+
+
+
+
+
+
+
+<h1 class="visuallyhidden">Avgangstider fra Forskningsparken [T-bane]</h1>
+
+<div class="journey-planner-container">
+
+
+<section id="journey_planner" class="journey-planner" data-tabs="" data-selected-tab="selectedTab" data-active-class="tab-item--active" data-ng-init="selectedTab = 2" data-ng-controller="JourneyPlannerBlockCtrl">
+    <h2 class="visuallyhidden">Reiseplanleggeren</h2>
+    <div class="journey-planner__tab-list-bar">
+        <div class="page__wrapper page__wrapper--tablet">
+            <ul class="journey-planner-tab-list" data-ng-class="{'journey-planner-tab-list--open': selectedTab} ">
+                <li class="journey-planner-tab-list__item">
+                    <a data-tab-header="" class="tab-item"  href="" title="Finn reise">
+                       Finn reise
+                    </a>
+                </li>
+                <li class="journey-planner-tab-list__item">
+                    <a data-tab-header="" class="tab-item"  href="" title="Se avganger i sanntid">
+                       Se avganger i sanntid
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page__wrapper page__wrapper--tablet">
+		<div data-tab-body="" class="ng-cloak">
+
+
+<form action="/TravelPlannerBlock/FindTravel"
+      method="POST"
+      data-ng-submit="sendForm($event)"
+      data-ng-controller="JourneyPlannerFindTravelCtrl"
+      class="journey-planner__form "
+	  autocomplete="off"
+	  novalidate>
+	<h3 class="visuallyhidden">Planlegg reisen</h3>
+	<div class="grid grid--wide">
+		<div class="grid__item lap-one-half desk-one-half">
+			<div class="form-block__item form-block__item--spacing">
+				<label for="findtravel_from" class="form-block__label">
+					Fra
+				</label>
+				<div class="form-block__element form-autocomplete" role="application">
+                    <input type="text"
+                           id="findtravel_from"
+                           data-ng-model="findTravelModel.from"
+                           data-typeahead-min-length="2"
+                           data-typeahead="result as result.text for result in findFromPlace($viewValue)"
+                           data-typeahead-template-url="views/autocomplete/result.html"
+                           data-typeahead-wait-ms="autocompleteDelay"
+                           data-trigger-on-focus="true"
+                           data-typeahead-loading="isFromSpinnerVisible"
+                           data-typeahead-focus-first="false"
+                           data-force-select="true"
+                           data-clear-input=""
+                           class="form-control"
+                           placeholder="Jeg vil reise fra..." />
+					<span data-ng-show="isFromSpinnerVisible" class="autocompleteSpinner">loading</span>
+					<a href="" class="icon-svg icon-svg-location" title="Din posisjon" data-ng-click="getCurrentLocation('from')">
+						<span class="visuallyhidden">Din posisjon</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="grid__item lap-one-half desk-one-half">
+			<div class="form-block__item form-block__item--spacing form-block__switch-places-container">
+				<label for="findtravel_to" class="form-block__label">til</label>
+				<div class="form-block__element form-autocomplete" role="application">
+                    <input type="text"
+                           id="findtravel_to"
+                           data-ng-model="findTravelModel.to"
+                           data-typeahead-min-length="2"
+                           data-typeahead="result as result.text for result in findToPlace($viewValue)"
+                           data-typeahead-template-url="views/autocomplete/result.html"
+                           data-typeahead-wait-ms="autocompleteDelay"
+                           data-trigger-on-focus="true"
+                           data-typeahead-loading="isToSpinnerVisible"
+                           data-typeahead-focus-first="false"
+                           data-force-select="true"
+                           data-clear-input=""
+                           class="form-control"
+                           aria-describedby=""
+                           placeholder="Jeg vil reise til..." />
+					<span data-ng-show="isToSpinnerVisible" class="autocompleteSpinner">loading</span>
+					<a href="" class="icon-svg icon-svg-location" title="Din posisjon" data-ng-click="getCurrentLocation('to')">
+						<span class="visuallyhidden">Din posisjon</span>
+					</a>
+				</div>
+				<a href="" class="icon-svg icon-svg-switching_arrows_h form-block__switch-places" title="Bytt om innholdet i til- og fra-feltet" data-ng-click="switchPlaces()">
+					<span class="visuallyhidden">Bytt om innholdet i til- og fra-feltet</span>
+				</a>
+			</div>
+
+		</div>
+		<div class="grid__item desk-three-quarters">
+			<div class="validation-msg ng-cloak" data-ng-show="isValidationMsgVisible && !isFormValid()">
+				<ul>
+					<li data-ng-hide="!samePlace" id="jp__error-all">Avreise og ankomststed kan ikke v&#230;re like</li>
+
+					<li data-ng-hide="!fromIsEmpty" id="jp__error-from-1">Velg hvor du vil reise fra</li>
+					<li data-ng-hide="fromIsValid" id="jp__error-from-2">Stoppestedet eller navnet i fra-feltet er ugyldig</li>
+
+
+					<li data-ng-hide="!toIsEmpty" id="jp__error-to-1">Velg hvor du vil reise til</li>
+					<li data-ng-hide="toIsValid" id="jp__error-to-2">Stoppestedet eller navnet i til-feltet er ugyldig</li>
+
+
+					<li data-ng-hide="isTransportTypeSelected()" id="jp__error-transport-type">Velg minst ett transportmiddel</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="grid grid--wide">
+		<div class="grid__item lap-one-half desk-one-half grid__item--top-space">
+            <fieldset class="journey-planner__date-time-box" data-ng-class="{ 'visuallyhidden': isFirstLoadForPalmView}">
+                <label class="form-block__label" for="date-time-inputs-1">Dato</label>
+                <div class="form-block__element journey-planner__date-time-inputs">
+                    <label class="visuallyhidden" for="date-time-inputs-1">Velg dato for avreise</label>
+                    <div data-custom-select="">
+                        <select name="date" id="date-time-inputs-1" class="ng-cloak" data-ng-model="findTravelModel.date" data-ng-change="findTravelModel.customTime = true">
+                            <option data-ng-repeat="date in findTravelModelOptions.dates" value="{{date.value}}" data-ng-selected="date.value == findTravelModel.date">{{date.text}}</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+			<fieldset class="journey-planner__date-hours-box">
+				<label for="date-time-inputs-2" class="form-block__label">Tid</label>
+                <div class="form-block__element journey-planner__quick-date" data-ng-show="isFirstLoadForPalmView">
+                    <span>N&#229;</span>
+                    <button type="button" classs="icon-svg icon-svg-arrow_down--white journey-planner__advanced-link" data-ng-click="showDatePanel($event);" data-skip-to-content="date-time-inputs-1"
+                            title="Endre tid">
+                        Endre tid
+                    </button>
+                </div>
+                <div class="form-block__element journey-planner__date-time-inputs" data-ng-hide="isFirstLoadForPalmView">
+                    <label class="visuallyhidden" for="date-time-inputs-2">Velg klokkeslett for avgang eller ankomst</label>
+                    <input name="time" id="date-time-inputs-2" type="text" data-input-timepicker="" data-ng-model="findTravelModel.time" data-ng-change="findTravelModel.customTime = true" />
+                </div>
+			</fieldset>
+		</div>
+		<div class="grid__item lap-one-half desk-one-half grid__item--top-space grid__item--mobile-space">
+            <div class="grid grid--no-gutter" data-ng-hide="isFirstLoadForPalmView">
+                <div class="grid__item lap-two-thirds desk-two-thirds">
+                    <ul class="journey-planner__date-time-list">
+                        <li class="journey-planner-date-time-list__item" data-ng-repeat="timeType in findTravelModelOptions.time.types">
+                            <input type="radio" id="findtravel_departure_{{$index}}" value="{{timeType.value}}" data-ng-model="findTravelModel.timeType" />
+                            <label for="findtravel_departure_{{$index}}"><span class="ng-cloak">{{timeType.text}}</span></label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid__item lap-one-third desk-one-third text--right">
+                    <a href="" title="Flere valg" class="icon-svg icon-svg-arrow_down--white journey-planner__advanced-link" data-ng-click="findTravelModelOptions.isAdvancedSearch = !findTravelModelOptions.isAdvancedSearch" data-ng-class="{'icon-svg-arrow_up--white': findTravelModelOptions.isAdvancedSearch}" aria-expanded="{{findTravelModelOptions.isAdvancedSearch}}">
+                        Flere valg
+                    </a>
+                </div>
+            </div>
+		</div>
+	</div>
+	<div class="journey-planner__advanced ng-cloak" data-ng-if="findTravelModelOptions.isAdvancedSearch">
+		<div class="grid">
+			<div class="grid__item one-whole lap-one-whole desk-three-quarters">
+				<div class="grid">
+					<div class="grid__item one-whole lap-one-half desk-one-half">
+						<fieldset class="journey-planner__transport-type-box">
+							<legend>Transportmiddel</legend>
+							<ul class="journey-planner__transport-type-list">
+								<li data-ng-repeat="transportOption in findTravelModel.transportOptions" class="journey-planner-transport-type-list__item">
+                                    <input type="checkbox" data-ng-model="transportOption.selected" id="transport_option_{{transportOption.type}}"/>
+									<label class="icon-svg icon-svg-check" for="transport_option_{{transportOption.type}}">{{transportOption.text}}</label>
+								</li>
+							</ul>
+						</fieldset>
+					</div>
+					<div class="grid__item one-whole lap-one-half desk-one-half">
+						<fieldset class="journey-planner__certain-lines-box">
+							<legend>Linjer</legend>
+							<label for="line-number" class="visuallyhidden">Fyll inn &#248;nsket linjenummer</label>
+							<span class="journey-planner__certain-lines-text">Vil du reise med en spesifikk linje?</span>
+						    <div data-lines="" class="journey-planner__find-travel" data-selected-lines="findTravelModel.transportLines" data-button-name="Legg til"></div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+			<div class="grid__item one-whole wholequarter desk-one-quarter">
+				<fieldset class="journey-planner__minimum-transfer-time-box">
+				    <legend>Ekstra byttetid</legend>
+                    
+                    
+					<label class="visuallyhidden" for="min-tt">Velg ekstra byttetid i minutter</label>
+					<div data-custom-select="form__customSelect form__customSelect--small">
+						<select id="min-tt" data-ng-model="findTravelModel.minimumTransferTime">
+							<option data-ng-repeat="transferTime in findTravelModelOptions.minimumTransferTime" value="{{transferTime}}" data-ng-selected="transferTime == findTravelModel.minimumTransferTime">{{transferTime}}</option>
+						</select>
+					</div>
+					<span>min</span>
+				</fieldset>
+				<fieldset class="journey-planner__maximum-walking-time-box">
+					<legend>Maksimal Gangtid</legend>
+					<label class="visuallyhidden" for="max-tt">Velg maksimal gangtid i minutter</label>
+					<div data-custom-select="form__customSelect form__customSelect--small">
+						<select id="max-tt" data-ng-model="findTravelModel.maximumWalkingTime">
+							<option data-ng-repeat="maximumWalkingTime in findTravelModelOptions.maximumWalkingTime" value="{{maximumWalkingTime}}" data-ng-selected="maximumWalkingTime == findTravelModel.maximumWalkingTime">{{maximumWalkingTime}}</option>
+						</select>
+					</div>
+					<span>min</span>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+	<div class="grid">
+		<div class="grid__item text--right">
+			<div class="journey-plannner__submit cg-busy--jp cg-busy--set-inline cg-busy--small cg-busy--inline">
+				<span data-ng-show="isValidationMsgVisible && !isFormValid()" id="jp__submit" aria-live="polite">
+					<span class="validation-msg ng-cloak">
+						Feltene er ikke fylt ut riktig
+					</span>
+				</span>
+				<input type="submit" aria-describedby="jp__submit" title="Finn reise" value="Finn reise" class="standard-btn-2 journey-planner__submit-button--desktop" />
+				<div class="cg-busy cg-busy-animation" data-ng-show="spinnerVisible">
+					<div class="cg-busy-default-wrapper">
+						<div class="cg-busy-default-sign">
+							<div class="cg-busy-default-spinner"></div>
+							<div class="cg-busy-default-text ng-binding">Vennligst vent</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" name="jsonViewModel" value="{{findTravelModel}}" />
+</form>
+		</div>
+		<div data-tab-body="" class="">
+
+
+<form action="/TravelPlannerBlock/FindStop" method="POST" data-ng-submit="sendForm($event)" class="journey-planner__form journey-planner__form--stops" data-ng-controller="JourneyPlannerFindStopCtrl" autocomplete="off" novalidate>
+	<h3 class="visuallyhidden">S&#248;k etter avganger i sanntid fra et stoppested</h3>
+	<div class="grid grid--narrow">
+		<div class="grid__item one-whole lap-three-quarters desk-three-quarters">
+			<div class="form-block">
+				<div class="form-block__item form-block__item--spacing">
+					<label for="stop" class="form-block__label form-block__label--noCell">
+						Stoppested
+					</label>
+					<div class="form-block__element form-autocomplete" role="application">
+                        <input type="text"
+                               id="stop"
+                               data-ng-model="findStopModel.stop"
+                               data-typeahead-min-length="2"
+                               data-typeahead="result as result.text for result in findPlace($viewValue)"
+                               data-typeahead-template-url="views/autocomplete/result.html"
+                               data-typeahead-wait-ms="autocompleteDelay"
+                               data-trigger-on-focus="true"
+                               data-typeahead-loading="isStopSpinnerVisible"
+                               data-typeahead-focus-first="false"
+                               data-force-select="true"
+                               data-clear-input=""
+                               class="form-control"
+                               aria-required="true"
+                               required="required"
+                               placeholder="Jeg vil se avganger fra...">
+						<span data-ng-show="isStopSpinnerVisible" class="autocompleteSpinner">Vennligst vent</span>
+						<a href="" class="icon-svg icon-svg-location" title="Din posisjon" data-ng-click="getCurrentLocation()"></a>
+					</div>
+
+				</div>
+			</div>
+			<div class="validation-msg ng-cloak" data-ng-show="isValidationMsgVisible && !isFormValid()">
+				<ul>
+					<li data-ng-hide="stopIsValid">Stoppestedet er ugyldig</li>
+					<li data-ng-hide="!stopIsEmpty">Velg stoppested</li>
+					<li data-ng-hide="isTransportTypeSelected()">Velg minst ett transportmiddel</li>
+				</ul>
+			</div>
+		</div>
+		<div class="grid__item one-whole lap-one-quarter desk-one-quarter text--right">
+			<input type="submit" title="Se avganger" value="Se avganger" class="standard-btn-2 journey-planner__submit-button--desktop" />
+
+			<a href="" title="Flere valg" class="icon-svg icon-svg-arrow_down--white journey-planner__advanced-link jp-stops-advanced-hidden" data-ng-click="findStopModelOptions.isAdvancedSearch = !findStopModelOptions.isAdvancedSearch" data-ng-class="{'icon-svg-arrow_up--white': findStopModelOptions.isAdvancedSearch}">
+				Flere valg
+			</a>
+		</div>
+	</div>
+	<div class="journey-planner__advanced ng-cloak" data-ng-if="findStopModelOptions.isAdvancedSearch">
+		<div class="grid">
+			<div class="grid__item one-whole wholequarter desk-two-thirds">
+				<fieldset class="journey-planner__transport-type-box">
+					<legend>Transportmiddel</legend>
+					<ul class="journey-planner__transport-type-list">
+						<li data-ng-repeat="transportOption in findStopModel.transportOptions" class="journey-planner-transport-type-list__item journey-planner__transport-type-list__item--quarter">
+							<input type="checkbox" data-ng-model="transportOption.selected" id="transport_stop_option_{{transportOption.type}}" />
+							<label class="icon-svg icon-svg-check" for="transport_stop_option_{{transportOption.type}}">{{transportOption.text}}</label>
+						</li>
+					</ul>
+				</fieldset>
+			</div>
+			<div class="grid__item one-whole wholequarter desk-one-third">
+				<fieldset class="journey-planner__certain-lines-box">
+					<legend>Linjer</legend>
+					Vil du reise med en spesifikk linje?
+					<div data-lines="" class="journey-planner__find-travel" data-selected-lines="findStopModel.transportLines" data-button-name="Legg til"></div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+	<div class="grid grid--narrow">
+		<div class="grid__item one-whole lap-three-quarters desk-three-quarters ng-cloak" data-ng-show="isValidationMsgVisible && !isFormValid()">
+			<span class="validation-msg ng-cloak">
+				Feltene er ikke fylt ut riktig
+			</span>
+		</div>
+
+		<div class="grid__item text--right">
+			<div class="journey-plannner__submit cg-busy--place cg-busy--set-inline cg-busy--small cg-busy--inline text--center">
+				<div class="cg-busy cg-busy-animation" data-ng-show="spinnerVisible">
+					<div class="cg-busy-default-wrapper">
+
+						<div class="cg-busy-default-sign">
+
+							<div class="cg-busy-default-spinner"></div>
+
+							<div class="cg-busy-default-text ng-binding">Vennligst vent</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" name="jsonViewModel" value="{{findStopModel}}" />
+</form>
+		</div>
+    </div>
+    <span id="JPcontent" class="visuallyhidden"></span>
+</section>
+</div>
+
+<section class="stop-results" data-ng-controller="StopsResultsCtrl">
+	<div class="page__wrapper">
+		<div class="page__title">
+			<h2 class="beta">Avganger fra <span class="ng-cloak">{{findStopResultsModel.stopName}}</span></h2>
+		</div>
+        <div class="journey-planner__placeholder" ng-hide="customMarkers"></div>
+		<div class="grid grid--no-gutter stop-results__overlay-container ng-cloak">
+			<div class="grid__item desk-one-third">
+
+				<div class="stop-results__content">
+					<div class="panel panel--min-height">
+						<div class="panel__header" data-ng-show="findStopResultsModel.deviations.length > 0">
+							<a href="" data-ng-click="showDeviations(findStopResultsModel.deviations, 'summary_deviation')" class="crisis-message crisis-message--small" title="Informasjon om avvik p&#229; linjen">
+								<span class="icon-svg icon-svg-exclamation_mark crisis-message__icon"></span>
+								<span class="crisis-message__desc">
+									{{findStopResultsModel.deviations.length}} {{findStopResultsModel.deviations.length > 1 ? 'avvik' : 'avvik' }}
+								</span>
+							</a>
+							<div id="summary_deviation" class="popupHandler"></div>
+						</div>
+
+						<div class="panel__content">
+
+							<div class="stop-results__favourites">
+								<input type="checkbox" id="fav-stop" data-ng-click="toggleStopFavorites($event, '#fav_stop_' + $index)" data-ng-checked="isFavorite">
+								<label for="fav-stop" class="icon-svg" title="Legg til stoppestedet som favoritt">
+									Legg {{findStopResultsModel.stopName}} til i favoritter
+								</label>
+								<div id="fav_stop_{{$index}}" class="popupHandler"></div>
+							</div>
+
+							<div class="toolbar toolbar--stop cf">
+								<div class="update-date">
+									<a href="{{findStopResultsModel.url}}" title="Oppdater" data-ng-click="spinnerVisible = true">Oppdater</a>
+									<span class="update-date__text">
+										<span>Sist oppdatert:</span>
+										<strong>{{findStopResultsModel.updateTime}}</strong>
+									</span>
+								</div>
+
+								<div class="cg-busy--small cg-busy--inline text--center" data-ng-show="spinnerVisible">
+									<div class="cg-busy cg-busy-animation">
+										<div class="cg-busy-default-wrapper">
+
+											<div class="cg-busy-default-sign">
+
+												<div class="cg-busy-default-spinner"></div>
+
+												<div class="cg-busy-default-text ng-binding">Vennligst vent</div>
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+								<ul>
+									<li><a href="{{findStopResultsModel.shareCalendarUrl}}" class="icon-svg icon-svg-calendar--grey" title="Legg til avgangene i kalenderen min" data-ng-click="trackCalendarEvent()"><span class="visuallyhidden">Legg til avgangene i kalenderen min</span></a></li>
+									<li>
+										<button class="icon-svg icon-svg-mail--grey" title="Send avgangene p&#229; e-post" data-ng-click="showMail(findStopResultsModel.shareEmailUrl, 'mailContainer')"></button>
+										<div id="mailContainer" class="popupHandler"></div>
+									</li>
+									<li><button class="icon-svg icon-svg-print--grey" title="Skriv ut listen med avganger" data-ng-click="print()"></button></li>
+								</ul>
+							</div>
+
+
+
+
+
+
+							<section class="stop-results__item" data-ng-repeat="platform in findStopResultsModel.platforms">
+								<h3 class="stop-results__title">Plattform <span data-ng-class="{'stop-results__platform-isHub': platform.isHub}">{{platform.name}}</span></h3>
+								<ul class="stop-results__list">
+									<li class="stop-results__list-item" data-ng-repeat="line in platform.lines">
+										<div class="line-block">
+											<div class="line-block__header" data-ng-style="{ 'border-color' : '#' + line.lineColor }">
+												<div class="line-block__number" data-ng-style="{ 'background-color' : '#' + line.lineColor }">{{line.name}}</div>
+												<div class="line-block__title" data-ng-style="{ 'background-color' : '#' + line.lineColor }">
+													<div class="line-block__stop">
+														<div class="line-block__stop-name">{{line.destination}}</div>
+														<div class="line-block__stop-icons">
+															<span class="visuallyhidden">{{line.transportationName}}</span>
+															<div class="line-block__favs">
+																<input type="checkbox" data-ng-checked="isLineFavorite(line)" id="line-block__favs-{{$parent.$index}}{{$index}}" data-ng-click="toggleLineFavorites(line, '#fav_line_' + $parent.$index + '_' + $index, $event)">
+																<label title="Legg til linjen som favoritt" for="line-block__favs-{{$parent.$index}}{{$index}}"><span class="visuallyhidden">Legg til linjen som favoritt</span></label>
+																<div id="fav_line_{{$parent.$index}}_{{$index}}" class="popupHandler"></div>
+															</div>
+															<span class="icon-svg icon-svg-{{getTransportTypeById(line.transportation)}}"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="line-block__table" data-ng-class="{'line-block__table--withWheelChairs': isLowFloorAvailable(line.departures)}">
+												<span class="visuallyhidden">Avganger</span>
+												<div class="grid grid--no-gutter">
+													<div data-ng-repeat="departure in line.departures" class="grid__item">
+														<span class="line-block__departure">
+															<span>
+																<a href="" data-ng-class="{'line-block__departure--open': (stopsOnLine.id == $parent.$parent.$index + '_' +  $parent.$index + '_' +  $index) && stopsOnLine.isVisible}" data-ng-click="showStopsOnLine(findStopResultsModel.stopId, departure.tripId, departure.tripTime, line.lineColor, $parent.$parent.$index + '_' +  $parent.$index + '_' +  $index)" title="Se tras&#233; og kj&#248;retider for linjen">
+																	<span>
+																		<span class="line-block__time" data-ng-class="{'line-block__time--first': $first}" data-ng-if="!departure.isRemainingTime">{{departure.departureTime}}</span>
+																		<span class="line-block__time" data-ng-class="{'line-block__time--first': $first}" data-ng-if="departure.isRemainingTime && departure.remainingMinutes > 0">{{departure.isInCongestion ? 'K&#248; ' : ''}}{{departure.remainingMinutes}} min</span>
+																		<span class="line-block__time" data-ng-class="{'line-block__time--first': $first}" data-ng-if="departure.isRemainingTime && departure.remainingMinutes == 0">{{departure.isInCongestion ? 'K&#248; ' : ''}}n&#229;</span>
+
+																	</span>
+																</a>
+																<br>
+																<span data-ng-show="departure.isLowFloor" class="icon-svg icon-svg-wheel-chair">
+																	<span class="visuallyhidden">Lavt gulv for enkel ombordstigning for rullestol og barnevogn</span>
+																</span>
+															</span>
+														</span>
+														<section data-ng-if="stopsOnLine.isVisible && !stopsOnLine.isAvailable && (stopsOnLine.id == $parent.$parent.$index + '_' +  $parent.$index + '_' +  $index)">
+															<p class="stop-results__msg">Beklager, teknisk feil. Kunne ikke vise tras&#233; og kj&#248;retider for linjen.</p>
+														</section>
+														<section class="stop-results__overlay" data-ng-if="stopsOnLine.isVisible && stopsOnLine.isAvailable && (stopsOnLine.id == $parent.$parent.$index + '_' +  $parent.$index + '_' +  $index)">
+															<div data-cg-busy="stopsOnLinePromise">
+																<a href="" class="close-btn" data-ng-click="showStopsOnLine(findStopResultsModel.stopId, departure.tripId, departure.tripTime, line.lineColor, stopsOnLine.id)" title="Lukk">
+																	<span class=visuallyhidden>Lukk</span>
+																</a>
+																<div class="route route--stops" data-ng-style="{ 'color' : '#' + stopsOnLine.color}" data-ng-if="stopsOnLine.stops.length">
+																	<div class="route__container">
+																		<div class="route__item">
+
+																			<span class="route__after" data-ng-style="{ 'background' : '#' + stopsOnLine.color, 'border-color':'#' + stopsOnLine.color }"></span>
+																			<span class="route__before" data-ng-style="{ 'border-color' : '#' + stopsOnLine.color }"></span>
+
+																			<div class="stops-list stops-list--open">
+
+																				<span class="visuallyhidden">Alle stoppesteder p&#229; linje {{line.name}}</span>
+																				<table>
+																					<tr class="stops-list__item" data-ng-repeat="stopOnLine in stopsOnLine.stops">
+																						<td class="stop-list__cell"></td>
+																						<td>
+
+																							<div class="stop__name" data-ng-class="{'stop__start': $first, 'stop__end': $last, 'stop__current': stopOnLine.isCurrent}">
+																								<span class="stops-list__after" data-ng-style="{ 'border-color' : '#' + stopsOnLine.color }"></span>
+
+																								<a href="{{ stopOnLine.url }}" title="Se avganger fra {{ stopOnLine.name }}">
+																									{{ stopOnLine.name }}
+																								</a>
+																								<span class="stop__time" data-ng-class="{'stop__time--top': $first, 'stop__time--bottom': $last, 'stop__current': stopOnLine.isCurrent}">
+																									{{stopOnLine.time}}
+																								</span>
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</section>
+
+													</div>
+												</div>
+											</div>
+											<a href="" data-ng-click="showDeviations(line.deviations, 'deviation_{{$parent.$index}}_{{$index}}')" data-ng-show="line.deviations.length > 0" class="crisis-message crisis-message--small" title="Informasjon om avvik p&#229; linjen">
+												<span class="icon-svg icon-svg-exclamation_mark crisis-message__icon"></span>
+												<span class="crisis-message__desc">
+													{{line.deviations.length}} {{line.deviations.length > 1 ? 'avvik' : 'avvik'}}
+												</span>
+											</a>
+											<div id="deviation_{{$parent.$index}}_{{$index}}" class="popupHandler"></div>
+										</div>
+									</li>
+								</ul>
+							</section>
+
+							<span class="gamma print-only route-ending-print-only">
+								Ha en fin tur!
+							</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="grid__item desk-two-thirds">
+				<h2 class="visuallyhidden">Kart med stoppesteder</h2>
+				<div class="map__sticky cf" data-sticky="" data-sticky-top="0" sticky-media="(min-width:1023px)">
+					<div class="map--stops" data-map="map" data-show-stops="showStopsOnMap" data-custom-markers="customMarkers" data-hash-tag-support="true" data-control="mapControl"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    </main>
+
+<footer class="footer" role="contentinfo">
+    <div class="page__wrapper">
+            <h2 class="visuallyhidden">Ruter kontaktinformasjon</h2>
+            <div class="grid">
+                <div class="grid__item  desk-one-quarter">
+                    <div class="footer-contact-box">
+                        <h3 class="delta">Kontakt oss</h3>
+                        <ul class="footer-contact-list">
+                                <li class="footer-contact-list__item  footer-contact-list__item--contact-form">
+                                    <a href="/fa-hjelp/kontakt-oss/kontaktskjema/" title="Kontaktskjema">Kontaktskjema</a>
+                                </li>
+
+                            <li class="footer-contact-list__item  footer-contact-list__item--phone-number"><a href="tel:177" title="177">177</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid__item  desk-one-quarter">
+                    <div class="footer-address-box">
+                        <h3 class="delta">Ruter As</h3>
+                        <p>Postboks 1030 Sentrum<br />0104 Oslo</p>
+                    </div>
+                </div>
+                <div class="grid__item  desk-two-quarters">
+                    <div class="footer-link-box">
+                        <ul class="footer__link-list">
+                            <li><a href="/om-ruter/selskapsinformasjon/">Om Ruter</a></li>
+                            <li><a href="/om-ruter/presse/">Presse og media</a></li>
+                            <li><a href="/om-ruter/jobb/" title="Jobb i Ruter">Jobb i Ruter</a></li>
+                            <li><a href="/kollektivanbud/" title="Kollektivanbud">Anbud</a></li>
+                        </ul>
+                        <ul class="footer__link-list">
+                            <li><a href="/fa-hjelp/vilkar/" title="Vilkår">Vilk&#229;r og personvern</a></li>
+                            <li><a href="/nettstedskart/" title="Nettstedskart">Nettstedskart</a></li>
+                            <li><a href="/kjop-billett/storkunde/">Bedrift</a></li>
+                            <li><a href="/kjop-billett/skole-og-spesialskyss/">Skoleskyss</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid__item desk-one-half">
+                    <div class="footer-social-box">
+                            <ul class="footer-social-list">
+                                    <li class="footer-social-list__item">
+                                        <a href="https://www.facebook.com/ruter.no" title="Faceboook">
+                                            <span class="icon-svg icon-svg-facebook"></span>
+                                            <span class="visuallyhidden">Facebook</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="footer-social-list__item">
+                                        <a href="https://twitter.com/ruter" title="Twitter">
+                                            <span class="icon-svg icon-svg-twitter"></span>
+                                            <span class="visuallyhidden">Twitter</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="footer-social-list__item">
+                                        <a href="https://instagram.com/ruter_no/" title="Instagram">
+                                            <span class="icon-svg icon-svg-instagram"></span>
+                                            <span class="visuallyhidden">Instagram</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="footer-social-list__item">
+                                        <a href="http://www.youtube.com/user/RuterVideo" title="Youtube">
+                                            <span class="icon-svg icon-svg-youtube"></span>
+                                            <span class="visuallyhidden">Youtube</span>
+                                        </a>
+                                    </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="grid__item desk-one-half cookies-link">
+                    <p><a title="Informasjonskapsler (cookies) på ruter.no" href="/fa-hjelp/vilkar/personvern/ruter.no/">Ruter.no bruker&nbsp;<strong>informasjonskapsler (cookies)</strong></a></p>
+                </div>
+            </div>
+            <span class="page__version visuallyhidden">
+                v2.0.0.710 26.08.2016 (14)
+            </span>
+    </div>
+</footer>
+    
+
+    <div class="fixed-messages">
+        <div data-unsupported-browser="" class="fixed-messages__item ng-cloak">
+            <h2 class="delta"></h2>
+            <p>Vi anbefaler at du bruker en nyere versjon av Internet Explorer, Chrome, Safari eller Firefox for best mulig opplevelse</p>
+        </div>
+    </div>
+    <script src="/Static/Ruter/js/bundle-libraries.js?v=Ud7jU7qRh-FZN9Hsi11DrlkeMnSbCMSGVJ-TytZmEVI1"></script>
+
+    <script src="/Static/Ruter/js/bundle.js?v=vjCh8WCYwoGW0TQFD08qMN4PxFEYuOkKymp2FCdQH901"></script>
+
+    
+
+
+    <script>
+             angular.module('app').value('findStopResultsModel', angular.fromJson({"stopModel":{"AlightingAllowed":false,"BoardingAllowed":false,"District":"Oslo","ID":3010370,"Name":"Forskningsparken [T-bane]","X":596132,"Y":6646383,"Zone":"1","PlaceType":"Stop","Lines":[{"ID":4,"LineColour":"F07800","Name":"4","Transportation":8},{"ID":5,"LineColour":"F07800","Name":"5","Transportation":8}],"Url":"/reiseplanlegger/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/","FromUrl":"/reiseplanlegger/Mellom/Fra/(3010370)Forskningsparken%20%5bT-bane%5d/","ToUrl":"/reiseplanlegger/Mellom/til/(3010370)Forskningsparken%20%5bT-bane%5d/"},"url":"/reiseplanlegger/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/","urls":{"en":"/en/journey-planner/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/","no":"/reiseplanlegger/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/"},"stopId":3010370,"stopName":"Forskningsparken [T-bane]","district":"Oslo","updateTime":"22:13:36","shareCalendarUrl":"/reiseplanlegger/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/0/ShareStopByCalendar/","shareEmailUrl":"/reiseplanlegger/Stoppested/(3010370)Forskningsparken%20%5bT-bane%5d/Avganger/0/ShareStopByEmail/","stopCoordinates":{"x":596132,"y":6646383},"deviations":[],"platforms":[{"name":"1 (Retning sentrum)","isHub":false,"lines":[{"id":4,"name":"4","destination":"Bergkrystallen via Majorstuen","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400040377","tripTime":"040920162217","isLowFloor":false,"departureTime":"22:17","isRemainingTime":true,"isInCongestion":false,"remainingMinutes":3},{"tripId":"400040381","tripTime":"040920162232","isLowFloor":false,"departureTime":"22:32","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":18},{"tripId":"400040385","tripTime":"040920162247","isLowFloor":false,"departureTime":"22:47","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":33},{"tripId":"400040389","tripTime":"040920162302","isLowFloor":false,"departureTime":"23:02","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":48},{"tripId":"400040393","tripTime":"040920162317","isLowFloor":false,"departureTime":"23:17","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":63}]},{"id":5,"name":"5","destination":"Vestli via Majorstuen","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400050396","tripTime":"040920162223","isLowFloor":false,"departureTime":"22:25","isRemainingTime":true,"isInCongestion":false,"remainingMinutes":12},{"tripId":"400050400","tripTime":"040920162238","isLowFloor":false,"departureTime":"22:38","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":24},{"tripId":"400050404","tripTime":"040920162253","isLowFloor":false,"departureTime":"22:53","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":39},{"tripId":"400050408","tripTime":"040920162308","isLowFloor":false,"departureTime":"23:08","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":54},{"tripId":"400050412","tripTime":"040920162323","isLowFloor":false,"departureTime":"23:23","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":69}]},{"id":5,"name":"5","destination":"Ringen via Majorstuen","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400050404","tripTime":"040920162227","isLowFloor":false,"departureTime":"22:27","isRemainingTime":true,"isInCongestion":false,"remainingMinutes":13},{"tripId":"400050408","tripTime":"040920162242","isLowFloor":false,"departureTime":"22:42","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":28},{"tripId":"400050412","tripTime":"040920162257","isLowFloor":false,"departureTime":"22:57","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":43},{"tripId":"400050416","tripTime":"040920162312","isLowFloor":false,"departureTime":"23:12","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":58},{"tripId":"400050420","tripTime":"040920162327","isLowFloor":false,"departureTime":"23:27","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":73}]},{"id":5,"name":"5","destination":"Storo","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":null,"tripTime":"040920162252","isLowFloor":false,"departureTime":"22:52","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":38}]},{"id":5,"name":"5","destination":"Ryen","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400050432","tripTime":"040920162301","isLowFloor":false,"departureTime":"23:01","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":47},{"tripId":"400050432","tripTime":"040920162307","isLowFloor":false,"departureTime":"23:07","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":53},{"tripId":"400050432","tripTime":"050920160012","isLowFloor":false,"departureTime":"00:12","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":118}]},{"id":4,"name":"4","destination":"Bergkrystallen","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400040403","tripTime":"050920160002","isLowFloor":false,"departureTime":"00:02","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":108}]},{"id":5,"name":"5","destination":"Vestli","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400050424","tripTime":"050920160008","isLowFloor":false,"departureTime":"00:08","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":114}]}]},{"name":"2 (Retning Sognsvann/Storo)","isHub":false,"lines":[{"id":5,"name":"5","destination":"Sognsvann","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400050386","tripTime":"040920162214","isLowFloor":false,"departureTime":"22:13","isRemainingTime":true,"isInCongestion":false,"remainingMinutes":0},{"tripId":"400050390","tripTime":"040920162229","isLowFloor":false,"departureTime":"22:29","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":16},{"tripId":"400050394","tripTime":"040920162244","isLowFloor":false,"departureTime":"22:44","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":31},{"tripId":"400050398","tripTime":"040920162259","isLowFloor":false,"departureTime":"23:01","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":48},{"tripId":"400050402","tripTime":"040920162314","isLowFloor":false,"departureTime":"23:14","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":60}]},{"id":5,"name":"5","destination":"Ringen via Storo","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400050394","tripTime":"040920162218","isLowFloor":false,"departureTime":"22:18","isRemainingTime":true,"isInCongestion":false,"remainingMinutes":5},{"tripId":"400050398","tripTime":"040920162233","isLowFloor":false,"departureTime":"22:35","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":22},{"tripId":"400050402","tripTime":"040920162248","isLowFloor":false,"departureTime":"22:48","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":35},{"tripId":"400050406","tripTime":"040920162303","isLowFloor":false,"departureTime":"23:03","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":50},{"tripId":"400050410","tripTime":"040920162318","isLowFloor":false,"departureTime":"23:18","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":64}]},{"id":4,"name":"4","destination":"Vestli via Storo","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400040379","tripTime":"040920162224","isLowFloor":false,"departureTime":"22:23","isRemainingTime":true,"isInCongestion":false,"remainingMinutes":10},{"tripId":"400040382","tripTime":"040920162239","isLowFloor":false,"departureTime":"22:39","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":26},{"tripId":"400040387","tripTime":"040920162254","isLowFloor":false,"departureTime":"22:54","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":41},{"tripId":"400040391","tripTime":"040920162309","isLowFloor":false,"departureTime":"23:09","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":56},{"tripId":"400040395","tripTime":"040920162324","isLowFloor":false,"departureTime":"23:24","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":70}]},{"id":5,"name":"5","destination":"Ullevål stadion","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":null,"tripTime":"040920162251","isLowFloor":false,"departureTime":"22:51","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":38}]},{"id":4,"name":"4","destination":"Vestli","transportation":8,"transportationName":"T-bane","lineColor":"F07800","deviations":[],"departures":[{"tripId":"400040405","tripTime":"050920160009","isLowFloor":false,"departureTime":"00:09","isRemainingTime":false,"isInCongestion":false,"remainingMinutes":115}]}]}]}));
+             angular.module('app').value('findTravelModel', angular.fromJson({"from":{"id":null,"text":null,"type":0,"coordinates":{"x":null,"y":null},"lines":null},"to":{"id":null,"text":null,"type":0,"coordinates":{"x":null,"y":null},"lines":null},"minimumTransferTime":0,"maximumWalkingTime":20,"timeType":0,"customTime":false,"transportOptions":[{"type":2,"selected":true,"text":"Buss"},{"type":5,"selected":true,"text":"Båt"},{"type":1,"selected":true,"text":"Flybuss"},{"type":4,"selected":true,"text":"Flytog"},{"type":7,"selected":true,"text":"Trikk"},{"type":8,"selected":true,"text":"T-bane"},{"type":6,"selected":true,"text":"Tog"}],"transportLines":[],"date":"04092016","time":"2213","currentLanguage":"no"}));
+             angular.module('app').value('findTravelModelOptions', angular.fromJson({"isAdvancedSearch":false,"dates":[{"value":"04092016","text":"Søndag 04.09.2016"},{"value":"05092016","text":"Mandag 05.09.2016"},{"value":"06092016","text":"Tirsdag 06.09.2016"},{"value":"07092016","text":"Onsdag 07.09.2016"},{"value":"08092016","text":"Torsdag 08.09.2016"},{"value":"09092016","text":"Fredag 09.09.2016"},{"value":"10092016","text":"Lørdag 10.09.2016"},{"value":"11092016","text":"Søndag 11.09.2016"},{"value":"12092016","text":"Mandag 12.09.2016"},{"value":"13092016","text":"Tirsdag 13.09.2016"},{"value":"14092016","text":"Onsdag 14.09.2016"},{"value":"15092016","text":"Torsdag 15.09.2016"},{"value":"16092016","text":"Fredag 16.09.2016"},{"value":"17092016","text":"Lørdag 17.09.2016"},{"value":"18092016","text":"Søndag 18.09.2016"},{"value":"19092016","text":"Mandag 19.09.2016"},{"value":"20092016","text":"Tirsdag 20.09.2016"},{"value":"21092016","text":"Onsdag 21.09.2016"},{"value":"22092016","text":"Torsdag 22.09.2016"},{"value":"23092016","text":"Fredag 23.09.2016"},{"value":"24092016","text":"Lørdag 24.09.2016"},{"value":"25092016","text":"Søndag 25.09.2016"},{"value":"26092016","text":"Mandag 26.09.2016"},{"value":"27092016","text":"Tirsdag 27.09.2016"},{"value":"28092016","text":"Onsdag 28.09.2016"},{"value":"29092016","text":"Torsdag 29.09.2016"},{"value":"30092016","text":"Fredag 30.09.2016"}],"time":{"displayFormat":"dd.MM.yyyy HH:mm","types":[{"value":0,"text":"avgang"},{"value":1,"text":"ankomst"}]},"minimumTransferTime":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],"maximumWalkingTime":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}));
+             angular.module('app').value('findStopModel', angular.fromJson({"stop":{"id":3010370,"text":"Forskningsparken [T-bane]","type":0,"coordinates":{"x":596132,"y":6646383},"lines":[{"id":4,"name":"4","destinationName":null,"transportation":8,"color":"F07800"},{"id":5,"name":"5","destinationName":null,"transportation":8,"color":"F07800"}]},"transportOptions":[{"type":2,"selected":true,"text":"Buss"},{"type":5,"selected":true,"text":"Båt"},{"type":1,"selected":true,"text":"Flybuss"},{"type":4,"selected":true,"text":"Flytog"},{"type":7,"selected":true,"text":"Trikk"},{"type":8,"selected":true,"text":"T-bane"},{"type":6,"selected":true,"text":"Tog"}],"transportLines":[],"date":"04092016","time":"2213","currentLanguage":"no"}));
+             angular.module('app').value('findStopModelOptions', angular.fromJson({"isAdvancedSearch":false,"time":{"valueFormat":"ddMMyyyyHHmm","displayFormat":"dd.MM.yyyy HH:mm","types":[{"value":0,"text":"avgang"},{"value":1,"text":"ankomst"}]}}));
+             angular.module('app').value('shareByEmailModel', angular.fromJson({"RecipientEmail":{"Value":null,"IsValid":true,"Message":"","Rules":[{"IsValid":true,"Message":"Fyll inn mottakers e-postadresse","Type":"required"},{"IsValid":true,"Message":"E-postadressen er ugyldig","Type":"pattern"}]},"SenderEmail":{"Value":null,"IsValid":true,"Message":"","Rules":[{"IsValid":true,"Message":"Fyll inn din e-postadresse","Type":"required"},{"IsValid":true,"Message":"E-postadressen er ugyldig","Type":"pattern"}]},"Message":{"Value":null,"IsValid":true,"Message":"","Rules":[]},"IsValid":true}));
+             angular.module('app').value('shareByEmailModelOptions', angular.fromJson({"recipientFieldName":"ViewModel.RecipientEmail.Value","senderFieldName":"ViewModel.SenderEmail.Value","messageFieldName":"ViewModel.Message.Value"}));
+
+        angular.module('app').constant('generalConfig', {
+            language: 'no',
+            zonesKmlFileUrl: 'https://ruter.no/Static/Ruter/Zones/Zones.kml',
+            autocompleteDelay: '300',
+            rootUrl: 'https://ruter.no/',
+            masterRootUrl: 'https://ruter.no/'
+        });
+
+
+        angular.module('app').constant('arcgisConfig', {
+            apiUrl: 'https://reisapi.ruter.no/Travel/GetRoute',
+            language: 'no-NO'
+        });
+
+        angular.module('app').constant('travelPlannerConfig', {
+            apiUrl: '/webapi/',
+            coordinatesDifferenceTolerance: 1
+        });
+
+        angular.module('app').constant('authenticationConfig', {
+            apiUrl: '/minside/logg-inn/'
+        });
+
+        angular.module('app').constant('myPageConfig', {
+            apiUrl: '/minside/registrering-av-reisekort/'
+        });
+
+        angular.module('app').constant('webProfileRegistrationConfig', {
+            apiUrl: '/minside/registrering/'
+        });
+
+        angular.module('app').constant('travelCardConfig', {
+            apiUrl: '/minside/'
+        });
+
+        angular.module('app').constant('searchPageConfig', {
+            apiUrl: '/sok/'
+        });
+
+        angular.module('app').constant('webShopPageConfig', {
+            apiUrl: '/kjop-billett/nettbutikk/bestill-reisekort/'
+        });
+
+        angular.module('app').constant('deviationsConfig', {
+            apiUrl: '/avvik/avviksmelding/'
+        });
+
+        angular.module('app').constant('analyticsConfig', {
+            googleAnalyticsCode: 'UA-12088546-1',
+            domain: 'ruter.no'
+        });
+
+        angular.module('app').constant('googleTagManagerConfig', {
+            containerID: 'GTM-W8BD96',
+            clientIp: '37.191.207.15'
+        });
+
+        angular.module('app').constant('browserSupportConfig', {
+            blackList: ['MSIE 8.0']
+        });
+
+        angular.module('app').constant('xsrfToken', '2HGcGceZEtYjx-MfZ1aEXKtw_yFudgX6VnB4UMs2eLrqGZTJAZBtbNiKs8hLGGdJJdN5Xr2iR_b1TICpbivAl1V6Rlw1');
+
+
+    </script>
+        <script>
+            angular.module('app').config(function ($translateProvider) {
+                $translateProvider.translations('no', {
+                             TRAVEL_PLANNER__CURRENT_LOCATION: "Din posisjon" ,
+                             TRAVEL_PLANNER__INVALID_LINE: "Du må fylle inn et gyldig linjenummer" ,
+                             TRAVEL_PLANNER__LINES_LIMIT: "Det er dessverre ikke mulig å legge til mer enn fire linjer" ,
+                             TRAVEL_PLANNER__LINES_ALREADY_ADDED: "Linjen er allerede lagt til" ,
+                             TRAVEL_PLANNET__INCONSISTENCY_OF_LINE_AND_TRANSPORT: "Linjenummeret og transportmiddelet du har valgt samsvarer ikke" ,
+                             TRAVEL_PLANNER__SELECT_HOUR: "Velg time" ,
+                             TRAVEL_PLANNER__SELECT_MINUTE: "Velg minutter" ,
+                             TRAVEL_PLANNER__INPUT_PROMPT: "Skriv linjenummer" ,
+                             Bus: "Buss" ,
+                             Boat: "Båt" ,
+                             AirportBus: "Flybuss" ,
+                             AirportTrain: "Flytog" ,
+                             Tram: "Trikk" ,
+                             Metro: "T-bane" ,
+                             Train: "Tog" ,
+                             Walking: "Gåavstand" ,
+                             Area: "Område" ,
+                             Stop: "Stoppested" ,
+                             POI: "Severdighet" ,
+                             Street: "Adresse" ,
+                             CurrentLocation: "Din posisjon" ,
+                             TRAVEL_PLANNER_EMAIL__RECIPIENT: "Mottakers e-postadresse" ,
+                             TRAVEL_PLANNER_EMAIL__SENDER: "Din e-postadresse" ,
+                             TRAVEL_PLANNER_EMAIL__MESSAGE: "Melding til mottaker" ,
+                             TRAVEL_PLANNER_EMAIL__SUBMIT: "Send" ,
+                             REQUIRED_FIELDS: "Må fylles ut" ,
+                             DEVIATIONS__VALID_FROM: "Gyldig fra:" ,
+                             DEVIATIONS__APPLIES_FOR_LINES: "Gjelder linjene:" ,
+                             DEVIATIONS__APPLIES_FOR_STOPS: "Gjelder stoppestedene:" ,
+                             DEVIATIONS__LAST_UPDATED: "Sist oppdatert:" ,
+                             DEVIATIONS__CLOSE: "Lukk" ,
+                             MAP_TRANSPORTATION: "Vis kollektivreisen" ,
+                             MAP_WALKING: "Vis gangveien" ,
+                             MAP_EXPAND: "Utvid" ,
+                             MAP_EXPAND_TITLE: "Se et større kart" ,
+                             MAP_COLLAPSE: "Mindre kart" ,
+                             MAP_CURRENT_LOCATION: "Din posisjon" ,
+                             MAP_ZOOM_IN: "Zoom inn" ,
+                             MAP_ZOOM_OUT: "Zoom ut" ,
+                             MAP_STOPS: "Stoppesteder" ,
+                             MAP_SALES_POINTS: "Salgssteder" ,
+                             MAP_BIKES: "Bysykkel" ,
+                             MAP_BICYCLE_HELP_NOTE: "Se hvor du kan finne ledige bysykler" ,
+                             MAP_BICYCLE_SWITCH_HELP_NOTE: "Trykk for å bytte mellom ledige sykler og lediger låser" ,
+                             MAP_BICYCLE_ERROR_HEADER: "Vi får ikke kontakt med Oslo Bysykkel" ,
+                             MAP_BICYCLE_ERROR_MESSAGE: "Prøv igjen senere eller se " ,
+                             MAP_BICYCLE_LINK_TEXT: "Les mer og skaff sykkelabonnement på Oslobysykkel.no" ,
+                             MAP_BICYCLE_UNAVAILABLE_EXCLAMATION: "Sykkel data utilgjengelig" ,
+                             MAP_BICYCLE_UNAVAILABLE_BIKE: "Sykkel data utilgjengelig" ,
+                             MAP_BIKE_POINT: "Bike" ,
+                             MAP_LOCK_POINT: "Lock" ,
+                             MAP_ZONES: "Soner" ,
+                             MAP_SHOW: "Vis kart" ,
+                             MAP_CLOSE: "Lukk kartet" ,
+                             MAP_VIEW_STANDARD: "Standard kartvisning" ,
+                             MAP_VIEW_SATELITE: "Hybrid kartvisning" ,
+                             TRAVEL_FROM: "Reis fra" ,
+                             TRAVEL_FROM_DESCRIPTION: "Søk reise fra stoppestedet i reiseplanleggeren" ,
+                             TRAVEL_TO: "Reis til" ,
+                             TRAVEL_TO_DESCRIPTION: "Søk reise til stoppestedet i reiseplanleggeren" ,
+                             CLOSE_PLACE_INFORMATION_TITLE: "Lukk" ,
+                             REALTIME_DEPARTURES: "Se avganger fra stoppestedet" ,
+                             REALTIME_DEPARTURES_DESCRIPTION: "Se avganger fra stoppestedet" ,
+                             FAVORITES__TOO_MANY: "Det ser ut til at du har nådd maksimum antall favoritter. Fjern minst en favoritt for å legge til den nye du har valgt." ,
+                             MAP_ZONE: "sone" ,
+                             COOKIE_CLOSE: "Lukk info om cookies" ,
+                             UNSUPPORTED_BROWSER_CLOSE: "Lukk info om nettleserstøtte" ,
+                             PRELOADER__TEXT: "Vennligst vent" 
+                    });
+                $translateProvider.preferredLanguage('no');
+            });
+        </script>
+</body>
+</html>
