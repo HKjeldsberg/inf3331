@@ -1,0 +1,3 @@
+By running "python test.py", we test the SWIG implementation. However, when looking at the runtime, it seems to be running slower than all the previous implementations. I assume there is something wrong in my implementation. 
+
+I definetly find the implementation using Cython preferable over SWIG. I prefer Cython since it lets the programmer keep programming in the .py file, while making small changes to adapt to Cython. 

@@ -1,0 +1,1 @@
+By running "python test.py", the Cython implementation is tested. This gives (on my computer) generally lower runtime compared to the pure Python implementation, but still higher than the Numpy implementation. 

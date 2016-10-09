@@ -1,0 +1,3 @@
+When trying to implement numpy arrays in the computational heavy bits, and comparing it with standard Python lists, it actually seems like using numpy is slower. 
+This was done by using 10000,62500, 250000, 562600, 1000000 and 4000000 points. 
+Every simulation shows that the runtime using standard Python is slightly faster.  
